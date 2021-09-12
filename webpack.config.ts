@@ -5,6 +5,9 @@ const config: Configuration = {
   target: 'node',
   mode: 'development',
   entry: './src/index.ts',
+  resolve: {
+    mainFields: ['main', 'module'],
+  },
 };
 
 export default config;

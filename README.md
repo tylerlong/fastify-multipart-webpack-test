@@ -34,3 +34,23 @@ TypeError: hexoid is not a function
 error Command failed with exit code 1.
 info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
+
+
+## Reason
+
+webpack by default prioritizes "module" over "main".
+
+But one of the libraries named "hexoid" doesn't work after compilation.
+
+
+## Solution
+
+Add the following to webpack config:
+
+```ts
+resolve: {
+  mainFields: ['main', 'module'],
+}
+```
+
+So that it tried to resolve "main" in package.json got prioritized over "module".
